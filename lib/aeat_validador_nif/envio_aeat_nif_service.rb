@@ -25,7 +25,6 @@ module AeatValidadorNif
 
       # Build SOAP request
       request_str = build_soap_request(contribuyentes_xml)
-      p request_str
 
       # Send the request
       send_request(url: URL,
