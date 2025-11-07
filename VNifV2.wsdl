@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions 
+xmlns:VNifV2="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2.wsdl" 
+xmlns:VNifV2Ent="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Ent.xsd" 
+xmlns:VNifV2Sal="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Sal.xsd" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2.wsdl">
+
+	<wsdl:types>
+		<schema elementFormDefault="qualified"  
+		targetNamespace="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2.wsdl"
+		xmlns:VNifV2Ent="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Ent.xsd" 
+		xmlns:VNifV2Sal="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Sal.xsd" 
+		xmlns="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Ent.xsd" schemaLocation="VNifV2Ent.xsd"/>
+			<xsd:import namespace="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Sal.xsd" schemaLocation="VNifV2Sal.xsd"/>
+		</schema>
+	</wsdl:types>
+	
+	<wsdl:message name="Entrada">
+		<wsdl:part name="VNifV2Ent" element="VNifV2Ent:VNifV2Ent"/>
+	</wsdl:message>
+	<wsdl:message name="Salida">
+		<wsdl:part name="VNifV2Sal" element="VNifV2Sal:VNifV2Sal"/>
+	</wsdl:message>
+
+	<wsdl:portType name="VNifV2">
+		<wsdl:operation name="VNifV2">
+			<wsdl:input name="Entrada" message="VNifV2:Entrada"/>
+			<wsdl:output name="Salida" message="VNifV2:Salida"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="VNifV2SoapBinding" type="VNifV2:VNifV2">
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="VNifV2">
+			<wsdlsoap:operation soapAction=""/>
+			<wsdl:input name="Entrada">
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="Salida">
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="VNifV2Service">
+		<!--Puerto para conexiones desde internet en PRO -->
+		<wsdl:port name="VNifPort1" binding="VNifV2:VNifV2SoapBinding">
+			<wsdlsoap:address location="https://www1.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP"/>
+			<wsdlsoap:address location="https://www10.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

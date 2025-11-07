@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Sal.xsd" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:VNifV2Sal="http://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2Sal.xsd" elementFormDefault="qualified">
+	<annotation>
+		<documentation>
+			Esquema de respuesta del servico de verificación de NIF.
+		</documentation>
+	</annotation>
+	<element name="VNifV2Sal" type="VNifV2Sal:VNifV2Sal"/>
+	<complexType name="VNifV2Sal">
+		<annotation>
+			<documentation>
+				Nif : Nif verificado
+				Nombre: Razón Social en caso de Persona Jurídica. En caso de Persona Física se responde un eco de los datos de entrada por temas de Protección de Datos Personales
+				Resultado: Resultado del proceso de identificación
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="Contribuyente" minOccurs="1" maxOccurs="20000">
+				<complexType>
+					<sequence>
+						<element name="Nif" type="string"/>
+						<element name="Nombre" type="string"/>
+						<element name="Resultado" type="string"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
