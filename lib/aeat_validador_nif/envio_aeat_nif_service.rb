@@ -1,7 +1,7 @@
 module AeatValidadorNif
   class EnvioAeatNifService
 
-    URL = 'https://www10.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
+    URL = 'https://www1.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
     URL_SELLO = 'https://www10.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
 
     # Envia un registro de NIF a AEAT
