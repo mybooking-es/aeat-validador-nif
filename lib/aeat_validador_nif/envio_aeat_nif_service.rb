@@ -1,7 +1,8 @@
 module AeatValidadorNif
   class EnvioAeatNifService
 
-    URL = 'https://www1.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
+    URL = 'https://www10.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
+    URL_SELLO = 'https://www10.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP'
 
     # Envia un registro de NIF a AEAT
     # @param contribuyentes_xml [String] XML del registro de NIF
@@ -9,7 +10,7 @@ module AeatValidadorNif
     # @param client_key [String] Clave privada del cliente en formato PEM
     # @param cert_password [String, nil] Contraseña del certificado (opcional)
     #
-    def send_aeat(contribuyentes_xml:, client_cert: nil, client_key:, cert_password: nil)
+    def send_aeat(contribuyentes_xml:, certificado_sello: false, client_cert: nil, client_key:, cert_password: nil)
 
       # Validates XML content
       if contribuyentes_xml.nil? || contribuyentes_xml.empty?
@@ -26,8 +27,14 @@ module AeatValidadorNif
       # Build SOAP request
       request_str = build_soap_request(contribuyentes_xml)
 
+      if certificado_sello
+        url = URL_SELLO
+      else
+        url = URL
+      end
+
       # Send the request
-      send_request(url: URL,
+      send_request(url: url,
                    xml: request_str,
                    client_cert: client_cert,
                    client_key: client_key,
