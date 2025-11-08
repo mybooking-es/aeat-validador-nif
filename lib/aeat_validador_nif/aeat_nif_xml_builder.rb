@@ -40,12 +40,12 @@ module AeatValidadorNif
 
       contribuyente_element = Nokogiri::XML::Node.new('vnif:Contribuyente', xml_document)
       contribuyente_nif_element = Nokogiri::XML::Node.new('vnif:Nif', xml_document)
-      contribuyente_nif_element.content = contribuyente.nif
+      contribuyente_nif_element.content = contribuyente.nif.to_s.strip
       contribuyente_element.add_child(contribuyente_nif_element)
 
       if contribuyente.nombre
         contribuyente_name_element = Nokogiri::XML::Node.new('vnif:Nombre', xml_document)
-        contribuyente_name_element.content = contribuyente.nombre
+        contribuyente_name_element.content = contribuyente.nombre.to_s.strip
         contribuyente_element.add_child(contribuyente_name_element)
       end
 
