@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_dependency "nokogiri", "1.19.4"
   spec.add_dependency "savon"
-  spec.add_dependency "rack", "~> 2.2"
+  spec.add_dependency "rack", "~> 3.2"
   spec.add_dependency "erb"
 
   # For more information and examples about making a new gem, check out our

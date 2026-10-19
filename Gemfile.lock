@@ -4,7 +4,7 @@ PATH
     aeat-validador-nif (0.1.1)
       erb
       nokogiri (= 1.19.4)
-      rack (~> 2.2)
+      rack (~> 3.2)
       savon
 
 GEM
@@ -76,7 +76,7 @@ GEM
       bigdecimal
     public_suffix (6.0.2)
     racc (1.8.1)
-    rack (2.2.21)
+    rack (3.2.7)
     rake (13.3.0)
     rexml (3.4.4)
     rspec (3.13.1)
